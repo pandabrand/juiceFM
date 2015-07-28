@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.2.2'
 
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', github: 'maccman/sinatra-contrib'
@@ -10,7 +10,7 @@ gem 'i18n'
 gem 'activesupport'
 gem 'rake'
 gem 'builder'
-gem 'json', '~> 1.7.7'
+gem 'json', '~> 1.8.2'
 gem 'dotenv'
 
 # Assets
@@ -27,9 +27,8 @@ gem 'dalli'
 gem 'memcachier'
 
 # DB
-gem 'sequel'
-gem 'sinatra-sequel'
-gem 'pg'
+gem 'mongo'
+gem 'bson_ext'
 
 group :development do
   gem 'thin'
