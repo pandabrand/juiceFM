@@ -15,7 +15,7 @@ gem 'dotenv'
 
 # Assets
 gem 'sprockets'
-gem 'sprockets-memcache-store'
+#gem 'sprockets-memcache-store'
 gem 'uglifier'
 gem 'closure-compiler'
 gem 'yui-compressor'
@@ -29,6 +29,7 @@ gem 'memcachier'
 # DB
 gem 'mongo'
 gem 'bson_ext'
+gem 'mongoid', '~> 3.0.0'
 
 group :development do
   gem 'thin'

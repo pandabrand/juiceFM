@@ -9,9 +9,6 @@ before_fork do |server, worker|
     Process.kill 'QUIT', Process.pid
   end
 
-  if defined?(Sequel::Model)
-    Sequel::DATABASES.each{ |db| db.disconnect }
-  end
 end
 
 after_fork do |server, worker|

@@ -11,6 +11,7 @@ Dotenv.load
 
 # Require base
 require 'sinatra/base'
+require 'mongo'
 require 'active_support'
 require 'active_support/core_ext'
 require 'active_support/json'
@@ -24,15 +25,14 @@ require 'app/routes'
 
 module JuiceFm
   class App < Sinatra::Application
-    configure do
-      set :database, lambda {
-        ENV['DATABASE_URL'] ||
-          "postgres://localhost:5432/juice_fm_#{environment}"
-      }
-    end
 
     configure :development, :staging do
-      database.loggers << Logger.new(STDOUT)
+      enable :sessions, :logging, :dump_errors
+      logger = Logger.new($stdout)
+
+      Mongoid.configure do |config|
+        config.connect_to("juicefm_dev_db")
+      end
     end
 
     configure do
