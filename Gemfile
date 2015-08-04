@@ -37,4 +37,5 @@ group :development do
   gem 'rspec', '~> 3.0'
   gem 'rack-test'
   gem 'factory_girl'
+  gem 'guard-rspec', require: false
 end
