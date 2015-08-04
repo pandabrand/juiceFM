@@ -34,4 +34,7 @@ gem 'mongoid', '~> 3.0.0'
 group :development do
   gem 'thin'
   gem 'byebug'
+  gem 'rspec', '~> 3.0'
+  gem 'rack-test'
+  gem 'factory_girl'
 end

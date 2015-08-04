@@ -32,6 +32,7 @@ GEM
     columnize (0.9.0)
     daemons (1.2.3)
     dalli (2.7.4)
+    diff-lcs (1.2.5)
     dotenv (2.0.2)
     eco (1.0.0)
       coffee-script
@@ -41,6 +42,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     i18n (0.7.0)
     json (1.8.3)
     kgio (2.9.3)
@@ -63,6 +66,19 @@ GEM
       rack (>= 1.0)
     raindrops (0.15.0)
     rake (10.4.2)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.1)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -102,13 +118,16 @@ DEPENDENCIES
   dotenv
   eco
   erubis
+  factory_girl
   i18n
   json (~> 1.8.2)
   memcachier
   mongo
   mongoid (~> 3.0.0)
   rack-standards
+  rack-test
   rake
+  rspec (~> 3.0)
   sinatra
   sinatra-contrib!
   sprockets
