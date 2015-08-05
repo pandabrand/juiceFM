@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Inventory do
   let(:inventory) { build(:inventory) }
   let(:product) { build(:product) }
-  
+
   it "should exist" do
     expect(inventory).to be_valid
   end

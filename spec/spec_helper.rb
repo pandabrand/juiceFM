@@ -98,6 +98,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.before :each do
+    Mongoid::Sessions.default.collections.select {|c| c.name !~ /system/}.each(&:drop)
+  end
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
   FactoryGirl.find_definitions

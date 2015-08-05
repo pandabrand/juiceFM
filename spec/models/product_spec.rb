@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe Product do
-  let(:product) { build(:product)}
+  let(:inventory) { build(:inventory) }
+  let(:product) { build(:product) }
 
   it "should exist" do
+    product.inventories.push(inventory)
     expect(product).to be_valid
   end
 
@@ -32,6 +34,7 @@ describe Product do
   end
 
   it "should have inventory records" do
-    expect(product.inventory).not_to be_empty
+    product.inventories.push(inventory)
+    expect(product.inventories).not_to be_empty
   end
 end

@@ -13,13 +13,15 @@ FactoryGirl.define do
     password     "fakepassword"
   end
 
-  factory :product, :class => Product do
-    name         "WGRN"
-    ingredient   ['apple','carrots','tomato']
-    description  "This is the most delicious juice you have ever tasted."
-    price        12.00
-    type         "Vegetable"
-    category     "Juices"
+  factory :product, :class => Product do |p|
+    p.name         "WGRN"
+    p.ingredient   ['apple','carrots','tomato']
+    p.description  "This is the most delicious juice you have ever tasted."
+    p.price        12.00
+    p.type         "Vegetable"
+    p.category     "Juices"
+    p.inventories  {[FactoryGirl.build(:inventory)]}
+
   end
 
   factory :inventory, :class => Inventory do
