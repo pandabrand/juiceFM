@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: juicefm_dev_db
+      hosts:
+        - localhost:27017

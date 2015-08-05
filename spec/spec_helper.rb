@@ -101,4 +101,5 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
   FactoryGirl.find_definitions
+  Mongoid.load!(File.join("config", "mongoid.yml"))
 end

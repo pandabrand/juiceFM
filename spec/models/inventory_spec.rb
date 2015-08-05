@@ -3,16 +3,7 @@ require 'spec_helper'
 describe Inventory do
   let(:inventory) { build(:inventory) }
   let(:product) { build(:product) }
-  before(:all) do
-    Inventory.delete_all
-    Product.delete_all
-  end
-
-  after(:all) do
-    Inventory.delete_all
-    Product.delete_all
-  end
-
+  
   it "should exist" do
     expect(inventory).to be_valid
   end

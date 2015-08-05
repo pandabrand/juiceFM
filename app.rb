@@ -30,9 +30,6 @@ module JuiceFm
       enable :sessions, :logging, :dump_errors
       logger = Logger.new($stdout)
 
-      Mongoid.configure do |config|
-        config.connect_to("juicefm_dev_db")
-      end
     end
 
     configure do
