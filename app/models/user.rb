@@ -11,8 +11,15 @@ module JuiceFm
       field :address_two, type:  String
       field :phone,       type:  String
       field :city,        type:  String
-      field :zip,         type:  Integer
+      field :zip,         type:  String
       field :state,       type:  String
+      field :password,    type:  String
+
+      validates :email, :phone, uniqueness: true
+      validates :first_name, :last_name, :email, :address_one, :city, :state, :zip, :phone, presence: true
+      validates :email, confirmation: true, format: { with: /@/, message: "Please use a valid email address"}
+      validates :zip, zip_code: true
+      validates :password, confirmation: true, length: {in: 6..20}
     end
   end
 end

@@ -8,7 +8,21 @@ FactoryGirl.define do
     address_two  "Apt 3f"
     phone        "123-123-1234"
     city         "Anytown"
-    zip          12345
+    zip          "12345"
     state        "ST"
+    password     "fakepassword"
+  end
+
+  factory :product, :class => Product do
+    name         "WGRN"
+    ingredient   ['apple','carrots','tomato']
+    description  "This is the most delicious juice you have ever tasted."
+    price        12.00
+    type         "Vegetable"
+    category     "Juices"
+  end
+
+  factory :inventory, :class => Inventory do
+    qty           15
   end
 end

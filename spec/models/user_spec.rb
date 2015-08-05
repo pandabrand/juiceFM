@@ -46,4 +46,8 @@ describe User do
   it "should have a state" do
     expect(user.state).not_to be_empty
   end
+
+  it "should have a password" do
+    expect(user.password).not_to be_empty
+  end
 end
