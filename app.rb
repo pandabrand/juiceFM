@@ -57,6 +57,7 @@ module JuiceFm
 
     # Other routes:
     # use Routes::Posts
+    use Routes::Index
   end
 end
 
