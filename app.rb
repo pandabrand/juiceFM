@@ -44,6 +44,7 @@ module JuiceFm
           secure: false,
           expire_after: 5.years,
           secret: ENV['SESSION_SECRET']
+
     end
 
     use Rack::Deflater
@@ -58,6 +59,7 @@ module JuiceFm
     # Other routes:
     # use Routes::Posts
     use Routes::Index
+    use Routes::About
   end
 end
 

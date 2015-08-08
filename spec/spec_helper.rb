@@ -20,6 +20,7 @@ require './app.rb'
 require 'rack/test'
 require 'rspec'
 require 'factory_girl'
+require 'rspec-html-matchers'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -106,4 +107,7 @@ RSpec.configure do |config|
   FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
   FactoryGirl.find_definitions
   Mongoid.load!(File.join("config", "mongoid.yml"))
+  config.include Rack::Test::Methods
+  config.include RSpecHtmlMatchers
+  def app() JuiceFm::App end
 end

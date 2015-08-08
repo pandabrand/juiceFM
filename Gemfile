@@ -38,4 +38,5 @@ group :development do
   gem 'rack-test'
   gem 'factory_girl'
   gem 'guard-rspec', require: false
+  gem 'rspec-html-matchers'
 end

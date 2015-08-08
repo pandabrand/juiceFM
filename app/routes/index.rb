@@ -2,7 +2,7 @@ module JuiceFm
   module Routes
     class Index < Base
       get '/' do
-        erb :index
+        erb :login
       end
 
     end

@@ -18,13 +18,12 @@
 
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'layout.css' %>">
   <script src="<%= asset_path 'layout.js' %>"></script>
-
-  <%== yield_content :head %>
 </head>
 <body>
-  <%== yield_content :bar %>
+  <%= erb :bar %>
   <div class="content">
-    <%== yield %>
+    <%= yield %>
   </div>
+  <%= erb :footer %>
 </body>
 </html>

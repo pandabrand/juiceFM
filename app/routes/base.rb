@@ -9,7 +9,7 @@ module JuiceFm
         disable :protection
         disable :static
 
-        set :erb, escape_html: true,
+        set :erb, #escape_html: true,
                   layout_options: {views: 'app/views/layouts'}
 
         enable :use_code
