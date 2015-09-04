@@ -1,3 +1,5 @@
+
+require 'sinatra/base'
 module JuiceFm
   module Routes
     class Base < Sinatra::Application
@@ -17,6 +19,7 @@ module JuiceFm
 
       register Extensions::Assets
       helpers Helpers
+      helpers Helpers::WardenHelper
       helpers Sinatra::ContentFor
     end
   end

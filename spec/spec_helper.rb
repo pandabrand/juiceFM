@@ -16,11 +16,14 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require './app.rb'
+require 'sinatra/base'
 require 'rack/test'
 require 'rspec'
 require 'factory_girl'
 require 'rspec-html-matchers'
+require 'faker'
+require './app.rb'
+require './app/helpers/wardenhelper'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -108,6 +111,29 @@ RSpec.configure do |config|
   FactoryGirl.find_definitions
   Mongoid.load!(File.join("config", "mongoid.yml"))
   config.include Rack::Test::Methods
-  config.include RSpecHtmlMatchers
-  def app() JuiceFm::App end
+  config.include Warden::Test::Helpers
+
+  config.after(:each) do
+    Warden.test_reset!
+  end
+
+  def app()
+    Rack::Builder.new do
+      # these serialization methods don't do anything in this example,
+      # but they could be necessary depending on the app you're testing
+      # Warden::Manager.serialize_into_session { |user| user.id }
+      # Warden::Manager.serialize_from_session { |id| User.get(id) }
+      #Warden::Manager.failure_app { self }
+      use Warden::Manager do |config|
+        config.serialize_into_session{|user| user.id}
+        config.serialize_from_session{|id| User.get(id)}
+        config.scope_defaults :default, strategies: [:password], action: 'auth/unauthenticated'
+        config.failure_app = self
+      end
+      # your session middleware needs to come before warden
+      use Rack::Session::Cookie
+      use Warden::Manager
+      run JuiceFm::App
+    end
+  end
 end

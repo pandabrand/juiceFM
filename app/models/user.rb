@@ -3,6 +3,10 @@ module JuiceFm
     class User
       include Mongoid::Document
       include Mongoid::Timestamps
+      include BCrypt
+
+      before_create :hash_password
+
       field :first_name,  type:  String
       field :last_name,   type:  String
       field :email,       type:  String
@@ -20,6 +24,19 @@ module JuiceFm
       validates :email, confirmation: true, format: { with: /@/, message: "Please use a valid email address"}
       validates :zip, zip_code: true
       validates :password, confirmation: true, length: {in: 6..20}
+
+      def hash_password
+        self.password = Password.create self.password, cost: 5
+      end
+
+      def authenticate(attempted_password)
+        if self.password == Password.create( attempted_password, cost: 6 )
+          true
+        else
+          false
+        end
+      end
+      
     end
   end
 end

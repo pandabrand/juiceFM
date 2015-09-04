@@ -1,8 +1,10 @@
 module JuiceFm
   module Routes
     class Index < Base
+      
       get '/' do
-        erb :login
+        check_authentication
+        erb :index
       end
 
     end

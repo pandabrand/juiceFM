@@ -10,11 +10,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!-- Include the compiled Ratchet CSS -->
-  <link rel="stylesheet" type="text/css" href="<%= asset_path 'ratchet.css'%>">
-
-  <!-- Include the compiled Ratchet JS -->
-  <script src="<%= asset_path 'ratchet.js' %>"></script>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'bootstrap-theme.min.css'%>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'bootstrap.min.css'%>">
 
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'layout.css' %>">
   <script src="<%= asset_path 'layout.js' %>"></script>
@@ -23,7 +20,12 @@
   <%= erb :bar %>
   <div class="content">
     <%= yield %>
+    <%= erb :footer %>
   </div>
-  <%= erb :footer %>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="<%= asset_path 'bootstrap.min.js' %>"></script>
 </body>
 </html>

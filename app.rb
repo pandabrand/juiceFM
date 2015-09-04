@@ -15,6 +15,7 @@ require 'mongo'
 require 'active_support'
 require 'active_support/core_ext'
 require 'active_support/json'
+require 'warden'
 
 Dir['lib/**/*.rb'].sort.each { |file| require file }
 
@@ -26,10 +27,11 @@ require 'app/routes'
 module JuiceFm
   class App < Sinatra::Application
 
+    register Sinatra::Flash
+
     configure :development, :staging do
       enable :sessions, :logging, :dump_errors
       logger = Logger.new($stdout)
-
     end
 
     configure do
@@ -41,7 +43,6 @@ module JuiceFm
       set :sessions,
           httponly: true,
           secure: production?,
-          secure: false,
           expire_after: 5.years,
           secret: ENV['SESSION_SECRET']
 
@@ -60,7 +61,11 @@ module JuiceFm
     # use Routes::Posts
     use Routes::Index
     use Routes::About
+    use Routes::Auth
+    use Routes::Admin
+
   end
 end
 
 include JuiceFm::Models
+include Warden::Test::Helpers

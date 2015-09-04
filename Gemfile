@@ -3,6 +3,7 @@ ruby '2.2.2'
 
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', github: 'maccman/sinatra-contrib'
+gem 'sinatra-flash'
 gem 'rack-standards'
 gem 'unicorn'
 gem 'erubis'
@@ -12,6 +13,8 @@ gem 'rake'
 gem 'builder'
 gem 'json', '~> 1.8.2'
 gem 'dotenv'
+gem 'bcrypt'
+gem 'warden'
 
 # Assets
 gem 'sprockets'
@@ -39,4 +42,5 @@ group :development do
   gem 'factory_girl'
   gem 'guard-rspec', require: false
   gem 'rspec-html-matchers'
+  gem 'faker'
 end
